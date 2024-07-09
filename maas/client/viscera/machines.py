@@ -106,6 +106,7 @@ class MachinesType(NodesType):
         cls,
         *,
         hostname: str = None,
+        resource_pool: str = None,
         architectures: typing.Sequence[str] = None,
         cpus: int = None,
         fabrics: typing.Sequence[FabricParam] = None,
@@ -136,6 +137,8 @@ class MachinesType(NodesType):
 
         :param hostname: The hostname to match.
         :type hostname: `str`
+        :param resource_pool: The resource_pool to match.
+        :type resource_pool: `str`
         :param architectures: The architecture(s) to match.
         :type architectures: sequence of `str`
         :param cpus: The minimum number of CPUs to match.
@@ -194,6 +197,7 @@ class MachinesType(NodesType):
         params = remove_None(
             {
                 "name": hostname,
+                "pool": resource_pool,
                 "arch": architectures,
                 "cpu_count": str(cpus) if cpus else None,
                 "mem": str(memory) if memory else None,
